@@ -31,19 +31,3 @@
 
 
 
----
-
-## 💻 Code Snippet: UART Register Access
-
-```c
-void UART2_Init(void) {
-    // 1. USART2 클록 활성화
-    RCC->APB1ENR |= (1 << 17); 
-    
-    // 2. Baud rate 직접 설정 (PCLK=36MHz, Baud=115200)
-    // BRR = 36,000,000 / 115,200 = 312.5
-    USART2->BRR = (19 << 4) | (8 << 0); 
-    
-    // 3. TX/RX 및 USART 활성화
-    USART2->CR1 |= (1 << 2) | (1 << 3) | (1 << 13);
-}
